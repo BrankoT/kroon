@@ -16,7 +16,7 @@
         />
       </ul>
       <div class="list-wrapper__pagination">
-          <span v-for="(page, index) in visiblePages" :key="index" @click="goTo(page)" class="pagination-page">
+          <span v-for="(page, index) in visiblePages" :key="index" @click="goTo(page)" :class="['pagination-page', currentPage === page ? 'pagination-page--active' : '']">
             {{ page }}
           </span>
         <button :class="['pagination-button', linkBack ? '' : 'disabled']" @click="goBack">back</button>
@@ -185,9 +185,10 @@
       .pagination-page {
         color: #06a9f6;
 
+        &--active,
         &:hover {
           cursor: pointer;
-          color: darken(#06a9f6, 20);
+          color: darken(#06a9f6, 30);
         }
       }
     }
